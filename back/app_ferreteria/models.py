@@ -1,8 +1,7 @@
+from django.contrib.auth.models import User
 from django.db import models
 
-class CardSelling(models.Model):
-    title = models.CharField(max_length=200)
-    price = models.IntegerField(max_length=None)
-    description = models.CharField(max_length=200)
-    publication_time = models.DateTimeField()
-    sold =models.BooleanField(default=False)
+class Profile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    date_of_birth = models.DateField(blank=True, null=True)
+    country = models.CharField(max_length=100, blank=True)
